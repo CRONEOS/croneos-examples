@@ -27,8 +27,11 @@ ACTION yourcontract::schedule(uint32_t delay_sec, uint32_t expiration_sec, name 
     mycronjob.auto_pay_gas = true; //deposit gas fee for current job. If you have deposits you don't need this.
 
     /*ADVANCED/OPTIONAL*/
-    // -> add extra permission(s) for executing the job
-    //mycronjob.custom_exec_permissions.push_back(permission_level{"piecesnbitss"_n, "active"_n});
+    // -> add custom permission(s) for executing the job //vector<permission_level>
+    //mycronjob.custom_exec_permissions ={permission_level{"customexec"_n, "active"_n} };
+
+    //restrict who can mine the job (when not set everyone can execute)
+    //mycronjob.auth_bouncer = name("miningpool11");
 
     //set an accompanying description (displayed in UI)
     mycronjob.description ="This is a recursive cron job.";
